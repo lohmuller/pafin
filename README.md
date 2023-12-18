@@ -39,16 +39,7 @@ Follow the steps below to get started.
 
    This will run the seeder to create the first user
 
-## Notes
-
-- The application will be accessible at [http://localhost:3000](http://localhost:3000).
-- The PostgreSQL database is available at [http://localhost:5432](http://localhost:5432).
-- If you ran the seed, you can use the following credentials to log in (```/auth/login```):
-  - Email: `admin@pafin.com`
-  - Password: `123456`
-
-
-4. Running the test (jest):
+## Running the test (jest):
 
    ```bash
    docker-compose exec pafin_app npm run test
@@ -92,3 +83,12 @@ Here are the main endpoints exposed by the Pafin Node.js API:
   - Body Parameters:
     - `email` (string): User's email address.
     - `password` (string): User's password.
+
+- If you ran the seed, you can use the following credentials to log in:
+  - Email: `admin@pafin.com`
+  - Password: `123456`
+
+## Notes
+
+- The application will be accessible at [http://localhost:3000](http://localhost:3000).
+- The PostgreSQL database is available at [http://localhost:5432](http://localhost:5432).

@@ -48,7 +48,7 @@ class Database {
             //    console.log('Connection to the database established successfully.');
         } catch (error) {
             console.error('Error connecting to the database:', (error as Error).message);
-            throw error;
+            //  throw error;
         }
     }
 

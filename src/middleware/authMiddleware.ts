@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import config from "../config";
 
 export const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
+
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {

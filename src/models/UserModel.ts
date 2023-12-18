@@ -51,6 +51,10 @@ class UserModel extends Model {
     }
 }
 
-database.addModels([UserModel]);
+try {
+    database.addModels([UserModel]);
+} catch (err) {
+
+}
 
 export default UserModel;
