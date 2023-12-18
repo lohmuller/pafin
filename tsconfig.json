@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "target": "es2021",
+        "module": "es2020",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "baseUrl": "./src",
+        "lib": [
+            "es2017"
+        ],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types",
+        ]
+    },
+    "files": [
+        "src/custom.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "seeders",
+        "migrations",
+        "__tests__"
+    ],
+    "ts-node": {
+        "compilerOptions": {
+            "module": "commonjs"
+        }
+    },
+}
