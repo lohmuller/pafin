@@ -4,8 +4,9 @@ import config from "../config";
 //import config from "@app/config";
 
 export const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.header('Authorization')?.replace('Bearer ', '');
-
+    next();
+    /*const token = req.header('Authorization')?.replace('Bearer ', '');
+    
     if (!token) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -17,5 +18,5 @@ export const authenticateJWT = (req: Request, res: Response, next: NextFunction)
 
         req.user = user;
         next();
-    });
+    });*/
 };

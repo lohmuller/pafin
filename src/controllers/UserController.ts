@@ -11,7 +11,6 @@ class UserController {
             const users = await UserModel.findAll({
                 attributes: { exclude: ['password'] },
             });
-            console.log(users);
             res.status(200).json(users);
         } catch (error) {
             console.error(error);
@@ -27,7 +26,6 @@ class UserController {
             const user = await UserModel.findByPk(userId, {
                 attributes: { exclude: ['password'] },
             });
-            console.log(user);
             if (!user) {
                 return res.status(404).json({ error: 'User not found.' });
             }

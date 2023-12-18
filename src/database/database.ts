@@ -24,12 +24,6 @@ class Database {
                 // write the SQL query and timing to a file or perform other logging actions
                 fs.appendFileSync(config.server.log_path, `${sql} [${timing} ms]\n`);
             },
-            pool: {
-                max: 5,
-                min: 0,
-                acquire: 30000,
-                idle: 10000,
-            },
         };
 
         Database.instance = new Sequelize(options);
@@ -41,7 +35,7 @@ class Database {
     private syncModels(): void {
         try {
             Database.instance.sync();
-            console.log('Models synchronized with the database.');
+            //     console.log('Models synchronized with the database.');
         } catch (error) {
             console.error('Error synchronizing models with the database:', error);
         }
@@ -51,7 +45,7 @@ class Database {
     private async connect(): Promise<void> {
         try {
             await Database.instance.authenticate();
-            console.log('Connection to the database established successfully.');
+            //    console.log('Connection to the database established successfully.');
         } catch (error) {
             console.error('Error connecting to the database:', (error as Error).message);
             throw error;

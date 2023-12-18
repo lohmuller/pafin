@@ -7,14 +7,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 import config from './config';
 
-const app = express();
+export const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/api', authenticateJWT, userRouter);
+app.use('/users', authenticateJWT, userRouter);
 app.use('/auth', authRouter);
 
 const PORT = config.server.port;
-app.listen(PORT, () => {
+export const appServer = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

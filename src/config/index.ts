@@ -26,7 +26,7 @@ function loadConfig(): ConfigType {
         case 'test':
             return require('./config-test').default;
         default:
-            return require('./config.ts').default;
+            return require('./config').default;
     }
 }
 

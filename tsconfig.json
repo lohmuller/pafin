@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es2021",
-        "module": "es2020",
+        "target": "ES2016",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "./dist",
@@ -14,15 +14,18 @@
         "emitDecoratorMetadata": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "baseUrl": "./src",
+        "baseUrl": "./",
         "lib": [
-            "es2017"
+            "ES6"
         ],
         "typeRoots": [
             "./node_modules/@types",
             "./src/@types",
         ]
     },
+    "include": [
+        "src/**/*.ts"
+    ],
     "files": [
         "src/custom.d.ts"
     ],

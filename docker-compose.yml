@@ -15,9 +15,7 @@ services:
       - .env
     depends_on:
       - postgres
-    volumes:
-      - ./:/app/
-    command: sh -c "cd /app/src && npm install && npm run dev"
+    command: sh -c "npm run start"
 
   # PostgreSQL Database
   postgres:
