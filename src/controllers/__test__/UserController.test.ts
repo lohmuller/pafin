@@ -1,7 +1,6 @@
-import request, { Options } from 'supertest'; // This is for making HTTP requests in tests
-import { app, appServer } from '../../app';
+import request, { Options } from 'supertest';
+import { app } from '../../app';
 import { NextFunction } from 'express';
-
 
 describe('UserController Get Users', () => {
 
@@ -71,11 +70,35 @@ describe('UserController - Authentication', () => {
 
 
 
-afterAll((done) => {
+afterAll(() => {
     jest.clearAllMocks();
-    appServer.close();
-    done();
 });
+
+/*
+UserModel.findAll = async () => {
+    let baba: any;
+    return new Promise(baba);
+}
+UserModel.findByPk = async () => {
+    return createMockUser();
+}
+UserModel.destroy = async () => {
+    let baba: any;
+    return new Promise(baba);
+}
+UserModel.update = async () => {
+    let baba: any;
+    return new Promise(baba);
+}
+UserModel.create = async () => {
+    let baba: any;
+    return new Promise(baba);
+}
+UserModel.findOne = async () => {
+    return createMockUser();
+}
+UserModel.comparePassword = (password: string) => false;
+*/
 
 jest.mock('../../models/UserModel', () =>
 ({
@@ -111,4 +134,19 @@ const createMockUser = (overrides?: object) => ({
 });
 
 
+/*const createMockUser = (overrides?: object): UserModel => {
+    return UserModel.build({
+        id: 'f959cd1f-b68d-4606-8b50-4a347dfbc7ab',
+        name: 'test',
+        email: 'test@email.com',
+        ...overrides,
+    })
+};*/
 
+
+/*
+const mockUserModel = jest.fn<InstanceType<typeof UserModel>, any[]>(() => {
+    // Pode adicionar lógica personalizada para a criação da instância se necessário
+    return new UserModel({}) as InstanceType<typeof UserModel>;
+});
+*/

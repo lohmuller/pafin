@@ -5,7 +5,9 @@ import PasswordUtils from '../utils/PasswordUtils';
 @Table({
     tableName: 'Users',
 })
-class UserModel extends Model {
+
+export class UserModel extends Model {
+
     @Column({
         type: DataType.UUID,
         primaryKey: true,
@@ -32,6 +34,8 @@ class UserModel extends Model {
     })
     password!: string;
 
+    static comparePassword: (candidatePassword: string) => boolean;
+
     @BeforeCreate
     @BeforeUpdate
     static async saveHashPassword(instance: UserModel) {
@@ -50,11 +54,6 @@ class UserModel extends Model {
         return values;
     }
 }
-
-try {
-    database.addModels([UserModel]);
-} catch (err) {
-
-}
+database.addModels([UserModel]);
 
 export default UserModel;

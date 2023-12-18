@@ -1,6 +1,7 @@
 import { ConfigType } from './index';
 import { Dialect } from 'sequelize';
 
+/* istanbul ignore next */
 const config: ConfigType = {
     database: {
         name: process.env.DB_NAME as string,

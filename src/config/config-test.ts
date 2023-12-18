@@ -1,6 +1,7 @@
 import { ConfigType } from './index';
 import { Dialect } from 'sequelize';
 
+/* istanbul ignore next */
 const config: ConfigType = {
     database: {
         name: process.env.DB_NAME as string,
@@ -11,7 +12,7 @@ const config: ConfigType = {
         dialect: process.env.DB_DIALECT as Dialect,
     },
     server: {
-        port: process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT, 10) : 3000,
+        port: 3001, //different port than
         log_path: process.env.LOG_PATH as string,
     },
     security: {

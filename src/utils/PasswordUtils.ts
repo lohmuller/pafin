@@ -2,7 +2,6 @@ import bcrypt from 'bcryptjs';
 import config from '../config';
 
 
-
 class PasswordUtils {
     static async hashPassword(password: string): Promise<string> {
         const saltRounds = 10;

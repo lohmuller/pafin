@@ -9,5 +9,6 @@ app.use(bodyParser.json());
 app.use(routes);
 
 export const appServer = app.listen(config.server.port, () => {
-    console.log(`Server is running on port ${config.server.port}`);
+    if (process.env.NODE_ENV != "test")
+        console.log(`Server is running on port ${config.server.port}`);
 });

@@ -19,46 +19,32 @@ class Database {
             host: config.database.host,
             port: config.database.port,
             dialect: config.database.dialect,
-            models: [],
+            models: ['../models/*.ts'],
             logging: (sql: string, timing?: number) => {
-                // write the SQL query and timing to a file or perform other logging actions
+                // write log of the SQL query and timing to a file
                 fs.appendFileSync(config.server.log_path, `${sql} [${timing} ms]\n`);
             },
         };
 
         Database.instance = new Sequelize(options);
-        this.syncModels();
         this.connect();
-    }
-
-    // Synchronize models with the database
-    private syncModels(): void {
-        try {
-            Database.instance.sync();
-            //     console.log('Models synchronized with the database.');
-        } catch (error) {
-            console.error('Error synchronizing models with the database:', error);
-        }
     }
 
     // Connect to the database
     private async connect(): Promise<void> {
         try {
             await Database.instance.authenticate();
-            //    console.log('Connection to the database established successfully.');
         } catch (error) {
             console.error('Error connecting to the database:', (error as Error).message);
             //  throw error;
         }
     }
 
-
     // Get the singleton instance of Sequelize
     public static getInstance(): Sequelize {
         if (!Database.instance) {
             new Database();
         }
-
         return Database.instance;
     }
 }

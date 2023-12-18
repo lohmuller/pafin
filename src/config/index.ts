@@ -21,6 +21,7 @@ export type ConfigType = {
     };
 };
 
+/* istanbul ignore next */
 function loadConfig(): ConfigType {
     switch (process.env.NODE_ENV) {
         case 'test':
