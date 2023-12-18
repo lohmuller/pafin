@@ -1,12 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import config from "../config";
-//import config from "@app/config";
 
 export const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
-    next();
-    /*const token = req.header('Authorization')?.replace('Bearer ', '');
-    
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+
     if (!token) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -18,5 +16,5 @@ export const authenticateJWT = (req: Request, res: Response, next: NextFunction)
 
         req.user = user;
         next();
-    });*/
+    });
 };
