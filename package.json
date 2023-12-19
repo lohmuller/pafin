@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "test": "cross-env NODE_ENV=test && npx jest --coverage",
+    "test": "cross-env NODE_ENV=test && npx jest --detectOpenHandles --coverage",
     "build": "tsc",
     "dev": "nodemon --exec ts-node -r dotenv/config src/app.ts",
     "seed": "npx sequelize-cli db:seed:all",

@@ -100,7 +100,7 @@ describe('UserController - CRUD Operations', () => {
     });
 
     it('should not update a user with invalid ID', async () => {
-        const userId = 'b';
+        const userId = 'f959cd1f-b68d-4606-8b50-4a347dfbc7ab';
         const response = await request(app).put(`/users/${userId}`).send();
         expect(response.status).toBe(400);
     });

@@ -28,8 +28,15 @@ Follow the steps below to get started.
 
    This will build and start the Node.js application and PostgreSQL database containers.
 
+3. Creating the database tables:
 
-3. Seeding the database:
+   After starting the application, you can create the tables with the following command:
+
+   ```bash
+   docker-compose exec pafin_app npm run migrate
+   ```
+
+4. Seeding the database:
 
    After starting the application, you can seed the database with initial data using the following command:
 
