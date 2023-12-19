@@ -66,6 +66,19 @@ describe('UserController - CRUD Operations', () => {
         });
     });
 
+    it('should update an existing user successfully Different Fields', async () => {
+        UserModel.findByPk = jest.fn().mockResolvedValueOnce(createMockUser());
+        UserModel.update = jest.fn().mockResolvedValueOnce(null);
+        const userId = 'f959cd1f-b68d-4606-8b50-4a347dfbc7ab';
+        const response = await request(app).put(`/users/${userId}`).send({ email: "test@gmail.com" });
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({
+            id: userId,
+            name: "test",
+            email: "test@email.com"
+        });
+    });
+
     it('should delete a user successfully', async () => {
         UserModel.findByPk = jest.fn().mockResolvedValueOnce(createMockUser());
         UserModel.destroy = jest.fn().mockResolvedValueOnce(null);
