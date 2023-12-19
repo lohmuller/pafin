@@ -32,12 +32,7 @@ class Database {
 
     // Connect to the database
     private async connect(): Promise<void> {
-        try {
-            await Database.instance.authenticate();
-        } catch (error) {
-            console.error('Error connecting to the database:', (error as Error).message);
-            //  throw error;
-        }
+        await Database.instance.authenticate();
     }
 
     // Get the singleton instance of Sequelize

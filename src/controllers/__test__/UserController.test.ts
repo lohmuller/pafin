@@ -115,11 +115,7 @@ describe('UserController - Authentication', () => {
     });
 
     it('should show wrong password while login', async () => {
-        jest.mock('../../models/UserModel', () =>
-        ({
-            findOne: jest.fn(() => createMockUser()),
-        })
-        );
+        UserModel.findOne = jest.fn().mockResolvedValueOnce(createMockUser({}, false));
         const response = await request(app).post('/auth/login').send({
             "email": "aaa@bb.com",
             "password": "aaa@bb.com",
@@ -144,102 +140,16 @@ jest.mock('../../middleware/authMiddleware', () => ({
     },
 }));
 
-/*afterAll(() => {
+afterAll(() => {
     jest.clearAllMocks();
-});*/
+});
 
-/*
-jest.mock('../../models/UserModel', () => ({
-    findAll: jest.fn(() => [createMockUser(), createMockUser()]),
-    findByPk: jest.fn((id: string) => createMockUser({ id })),
-    destroy: jest.fn(() => null),
-    update: jest.fn((object: object) => createMockUser(object)),
-    create: jest.fn((object: object) => createMockUser(object)),
-    findOne: jest.fn(() => createMockUser()),
-})); */
-
-/*
-UserModel.findAll = async () => {
-    let baba: any;
-    return new Promise(baba);
-}
-UserModel.findByPk = async () => {
-    return createMockUser();
-}
-UserModel.destroy = async () => {
-    let baba: any;
-    return new Promise(baba);
-}
-UserModel.update = async () => {
-    let baba: any;
-    return new Promise(baba);
-}
-UserModel.create = async () => {
-    let baba: any;
-    return new Promise(baba);
-}
-UserModel.findOne = async () => {
-    return createMockUser();
-}
-UserModel.comparePassword = (password: string) => false;
-*/
-
-
-
-// Defina as propriedades específicas do seu mock
-//interface MockUser extends UserModel {
-//   findAll: jest.Mock<{ /* Sua definição aqui */ }[], [], any>;
-//  findByPk: jest.Mock<Promise<MockUser | null>, [id: string], any>; // Adicione findByPk ao tipo MockUser
-// create: jest.Mock<MockUser, [object: object], any>; // Renomeie para evitar conflito com propriedades internas do Jest
-//findOne: jest.Mock<MockUser | null, [], any>; // Adicione findOne ao tipo MockUser
-//}
-
-/*const createMockUserB = (overrides?: object) => {
-    return {
-        findAll: jest.fn(() => [createMockUser(), createMockUser()]),
-        findByPk: jest.fn(async (id: string) => ({ ...UserModel, id })),
-        destroy: jest.fn(() => Promise.resolve(void 0)),
-        update: jest.fn(async (object: object) => ({ ...UserModel, ...object })),
-        create: jest.fn((object: object) => ({ ...UserModel, ...object })),
-        findOne: jest.fn(() => UserModel),
-        id: '',
-        name: '',
-        email: '',
-        password: '',
-        comparePassword: function (candidatePassword: string): Promise<boolean> {
-            throw new Error('Function not implemented.');
-        },
-        toJSON: function () {
-            throw new Error('Function not implemented.');
-        },
-    };
-};*/
-
-
-const createMockUser = (overrides?: object) => ({
+const createMockUser = (overrides?: object, comparePassword: boolean = true) => ({
     id: 'f959cd1f-b68d-4606-8b50-4a347dfbc7ab',
     name: 'test',
     email: 'test@email.com',
     ...overrides,
-    comparePassword: (password: string) => true,
+    comparePassword: (password: string) => comparePassword,
     update: jest.fn((object: object) => { createMockUser(object) }),
     destroy: jest.fn(() => (null)),
 });
-
-
-/*const createMockUser = (overrides?: object): UserModel => {
-    return UserModel.build({
-        id: 'f959cd1f-b68d-4606-8b50-4a347dfbc7ab',
-        name: 'test',
-        email: 'test@email.com',
-        ...overrides,
-    })
-};*/
-
-
-/*
-const mockUserModel = jest.fn<InstanceType<typeof UserModel>, any[]>(() => {
-    // Pode adicionar lógica personalizada para a criação da instância se necessário
-    return new UserModel({}) as InstanceType<typeof UserModel>;
-});
-*/
